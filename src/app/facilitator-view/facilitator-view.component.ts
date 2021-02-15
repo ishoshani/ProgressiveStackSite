@@ -12,7 +12,7 @@ import { StackService } from '../stack.service';
 @Component({
   selector: 'app-facilitator-view',
   templateUrl: './facilitator-view.component.html',
-  styleUrls: ['./facilitator-view.component.css']
+  styleUrls: ['./facilitator-view.component.scss']
 })
 export class FacilitatorViewComponent implements OnInit {
   list:Observable<StackView> = new Observable<StackView>();

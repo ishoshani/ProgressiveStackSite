@@ -1,14 +1,33 @@
 <div *ngIf="building; else profilemaker">
-<input [(ngModel)]=title placeholder="title"/>
-<app-tag-maker (tagDone)="addTag($event.name,$event.points)"></app-tag-maker>
-<ul>
-<li *ngFor="let tag of tags_subject|async">
-    <span>{{tag.name}}   {{tag.points}}</span>
-</li>
-</ul>
-<nav>
-    <p (click)="generateRoom()">Generate Room</p>
-</nav>
+ 
+<div>
+
+    <mat-form-field [hideRequiredMarker]=false>
+        <mat-label>Room Title</mat-label>
+        <input matInput [(ngModel)]=title/>
+    </mat-form-field>
+</div>
+<div>
+    <app-tag-maker (tagDone)="addTag($event.name,$event.points)"></app-tag-maker>
+</div>
+<div>
+<div *ngIf="tags.length>0; else noTags">
+        <mat-chip-list>
+            <mat-chip *ngFor="let tag of tags" [removable]="true" (removed)="removeTag(tag)">
+                {{tag.name}}  |  {{tag.points}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+     
+</div>
+<ng-template #noTags>
+    <div>
+        <p>Add some tags!</p>
+    </div>
+</ng-template>
+</div>
+<button mat-raised-button (click)="generateRoom()">Generate Room</button>
+
 </div>
 <ng-template #profilemaker>
     <app-profile-view [room]=room [facilitator]=true></app-profile-view>

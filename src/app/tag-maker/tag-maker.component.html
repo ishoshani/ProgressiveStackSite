@@ -1,7 +1,20 @@
 <span>
-    <input [(ngModel)]=tag placeholder="tag name"/>
-    <span (click)="setPoints(0)">0 </span>
-    <span (click)="setPoints(1)">1 </span>
-    <span (click)="setPoints(2)">2 </span>
-    <span (click)="finishTag()">+</span>
+    <mat-form-field>
+        <mat-label>Tag Name</mat-label>
+        <input matInput [(ngModel)]=tag/>
+    </mat-form-field>
+        <mat-button-toggle-group matSuffix [(ngModel)]=points style="height:5%px ;">
+            <mat-button-toggle class="shortbutton" value=0>
+                <mat-icon class="inbuttonicon">adjust</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle class="shortbutton" value=1>
+                <mat-icon class="inbuttonicon">control_point</mat-icon>
+            </mat-button-toggle> 
+            <mat-button-toggle class="shortbutton" value=2>
+                <mat-icon class="inbuttonicon">control_point_duplicate</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    <button mat-button class="shortbutton" (click)="finishTag()">
+        <mat-icon class="inbuttonicon">check_circle</mat-icon>
+    </button>
 </span>

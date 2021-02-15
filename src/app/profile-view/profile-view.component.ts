@@ -11,7 +11,7 @@ import { RoomService } from '../room.service';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.css']
+  styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent implements OnInit {
   user: Profile = {name:"",tags:[]}

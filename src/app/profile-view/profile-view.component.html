@@ -1,16 +1,19 @@
-<h2>Now Entering {{title}}</h2>
-<h3>Who are you</h3>
-<div>
-    <label>Name:
-        <input [(ngModel)]="user.name" placeholder= "name" />
-    </label>
-</div>
-<div>
-    <div *ngFor="let tag of availableTags">
-        <p (click)="tagToggle(tag)" [style.color]="getTagColor(tag)|async">{{tag.name}}</p>
+<mat-card class="w3-animate-right">
+    <h2>Now Entering {{title}}</h2>
+    <h3>Who are you?</h3>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="user.name"/>
+    </mat-form-field>
+    <div>
+        <ul>
+            <div *ngFor="let tag of availableTags">
+                <mat-checkbox (change)="tagToggle(tag)">{{tag.name}}</mat-checkbox>
+            </div>
+        </ul>
     </div>
-</div>
-
-<div>
-    <p (click) = "ProfileComplete()">Submit</p>
-</div>
+    
+    <div>
+        <button mat-raised-button (click) = "ProfileComplete()">Submit</button>
+    </div>
+</mat-card>

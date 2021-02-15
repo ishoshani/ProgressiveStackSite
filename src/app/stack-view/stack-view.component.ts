@@ -11,7 +11,7 @@ import { StackService } from '../stack.service';
 @Component({
   selector: 'app-stack-view',
   templateUrl: './stack-view.component.html',
-  styleUrls: ['./stack-view.component.css']
+  styleUrls: ['./stack-view.component.scss']
 })
 export class StackViewComponent implements OnInit {
   list:Observable<StackView> = new Observable<StackView>();

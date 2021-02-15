@@ -14,6 +14,15 @@ import { TagMakerComponent } from './tag-maker/tag-maker.component';
 import { FacilitatorViewComponent } from './facilitator-view/facilitator-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +41,14 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

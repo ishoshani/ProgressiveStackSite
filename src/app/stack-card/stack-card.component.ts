@@ -4,7 +4,7 @@ import { Stacker } from 'src/util/Stacker';
 @Component({
   selector: 'app-stack-card',
   templateUrl: './stack-card.component.html',
-  styleUrls: ['./stack-card.component.css']
+  styleUrls: ['./stack-card.component.scss']
 })
 export class StackCardComponent implements OnInit {
 

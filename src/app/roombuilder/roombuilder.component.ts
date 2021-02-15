@@ -7,7 +7,7 @@ import { RoomService } from '../room.service';
 @Component({
   selector: 'app-roombuilder',
   templateUrl: './roombuilder.component.html',
-  styleUrls: ['./roombuilder.component.css']
+  styleUrls: ['./roombuilder.component.scss']
 })
 export class RoombuilderComponent implements OnInit {
 
@@ -38,6 +38,12 @@ export class RoombuilderComponent implements OnInit {
   addTag(name:string,points:pointRange){
     this.tags.push({name, points})
     this.tags_subject.next(this.tags);
+  }
+
+  removeTag(removeTag:Tag){
+    this.tags = this.tags.filter((tag) => tag!=removeTag);
+    this.tags_subject.next(this.tags);
+
   }
 
   isValidRoomName(name: String){
