@@ -1,0 +1,30 @@
+<p>{{title}}</p>
+<p>roomcode: {{room}}</p>
+<button (click)="goOnStack()"> Go On Stack</button>
+<button (click)="goOnDR()">Go on DR</button>
+<p>Currently Speaking: {{(list|async)?.speaker.name}}
+<p>
+
+<div *ngIf="(list|async)?.stack && (list|async)?.stack.length!=0; else noStackBlock">
+    <h3>The Stack</h3>
+    <ul>
+        <li *ngFor="let stacker of (list|async)?.stack">
+            <app-stack-card [stacker]=stacker></app-stack-card>
+        </li>
+    </ul>
+</div>
+<ng-template #noStackBlock>
+    <p>no stack :(</p>
+</ng-template>
+
+<div *ngIf="(list|async)?.directResponse && (list|async)?.directResponse.length!=0; else noDRBlock">
+    <h3>The Stack</h3>
+    <ul>
+        <li *ngFor="let stacker of (list|async)?.stack">
+            <app-stack-card [stacker]=stacker></app-stack-card>
+        </li>
+    </ul>
+</div>
+<ng-template #noDRBlock>
+    <p>no Direct Response</p>
+</ng-template>

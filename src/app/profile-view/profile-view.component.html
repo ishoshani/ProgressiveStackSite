@@ -1,0 +1,16 @@
+<h2>Now Entering {{title}}</h2>
+<h3>Who are you</h3>
+<div>
+    <label>Name:
+        <input [(ngModel)]="user.name" placeholder= "name" />
+    </label>
+</div>
+<div>
+    <div *ngFor="let tag of availableTags">
+        <p (click)="tagToggle(tag)" [style.color]="getTagColor(tag)|async">{{tag.name}}</p>
+    </div>
+</div>
+
+<div>
+    <p (click) = "ProfileComplete()">Submit</p>
+</div>

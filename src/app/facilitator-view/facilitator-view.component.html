@@ -1,0 +1,39 @@
+<p>facilitator-view works!</p>
+<p>{{title}}</p>
+    <p>roomcode: {{room}}</p>
+    <button (click)="goOnStack()"> Go On Stack</button>
+    <button (click)="goOnDR()">Go on DR</button>
+    <button (click)="nextOnStack()">Call Next</button>
+    <button (click)="nextOnDR()">Call DirectResponse</button>
+
+
+    <div *ngIf="(list|async)?.speaker; else noSpeakerBlock">
+    <p>Currently Speaking: {{(list|async)?.speaker.name}}<p>
+    </div>
+    <ng-template #noSpeakerBlock>
+        <p> No Current Speaker </p>
+    </ng-template>
+
+    <div *ngIf="(list|async)?.stack && (list|async)?.stack.length!=0; else noStackBlock">
+    <h3>The Stack</h3>
+    <ul>    
+        <li *ngFor="let stacker of (list|async)?.stack">
+            <app-stack-card [stacker]=stacker></app-stack-card>
+        </li>
+    </ul>
+    </div>
+    <ng-template #noStackBlock>
+        <p>no stack :(</p>
+    </ng-template>
+
+    <div *ngIf="(list|async)?.directResponse && (list|async)?.directResponse.length!=0; else noDRBlock">
+        <h3>Direct Response</h3>
+        <ul>    
+            <li *ngFor="let stacker of (list|async)?.directResponse">
+                <app-stack-card [stacker]=stacker [facilitator]=true></app-stack-card>
+            </li>
+        </ul>
+        </div>
+        <ng-template #noDRBlock>
+            <p>no DirectResponse</p>
+        </ng-template>

@@ -1,0 +1,29 @@
+<mat-card>
+    <h2>Host</h2>
+    <div *ngIf="mode=='host'; else notHostBlock" >
+        <app-roombuilder></app-roombuilder>
+    </div>
+    <ng-template #notHostBlock>
+        <nav>
+            <p (click)="hostMode()">
+                Make a new Room
+            </p>
+        </nav>
+    </ng-template>
+</mat-card>
+
+<mat-card>
+    <h2>Join</h2>
+    <div *ngIf="mode=='guest'; else notGuestBlock">
+        <app-profile-view [room]="room"></app-profile-view>
+    </div>
+    <ng-template #notGuestBlock>
+        <input [(ngModel)]=room placeholder="Room Code"/>
+        <nav>
+            <p (click)="guestMode()">
+                Go to Room
+            </p>
+        </nav>
+    </ng-template>
+        
+</mat-card>

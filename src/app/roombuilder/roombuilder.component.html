@@ -1,0 +1,15 @@
+<div *ngIf="building; else profilemaker">
+<input [(ngModel)]=title placeholder="title"/>
+<app-tag-maker (tagDone)="addTag($event.name,$event.points)"></app-tag-maker>
+<ul>
+<li *ngFor="let tag of tags_subject|async">
+    <span>{{tag.name}}   {{tag.points}}</span>
+</li>
+</ul>
+<nav>
+    <p (click)="generateRoom()">Generate Room</p>
+</nav>
+</div>
+<ng-template #profilemaker>
+    <app-profile-view [room]=room [facilitator]=true></app-profile-view>
+</ng-template>
