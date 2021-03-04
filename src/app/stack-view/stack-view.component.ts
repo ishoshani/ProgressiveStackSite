@@ -17,6 +17,7 @@ export class StackViewComponent implements OnInit {
   list:Observable<StackView> = new Observable<StackView>();
   room:string = "";
   title:string = "connecting";
+  sizeOfStack=2;
 
   user:Profile = {name:"",tags:[]}
   constructor(private router:Router,

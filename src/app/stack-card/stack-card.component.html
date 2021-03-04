@@ -1,1 +1,15 @@
-<p>{{stacker.name}} -- <span *ngFor="let tag of stacker.tags">{{tag.name}} -- </span></p>
+<mat-card class = "stackCard">
+    <mat-grid-list cols=2 rowHeight="4:1">
+            <mat-grid-tile>
+                {{stacker.name}}
+            </mat-grid-tile>
+            <mat-grid-tile>
+
+                <mat-chip-list>
+                    <mat-chip *ngFor="let tag of stacker.tags">
+                        {{tag.name}}
+                    </mat-chip>
+                </mat-chip-list>
+        </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>

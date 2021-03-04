@@ -1,39 +1,58 @@
-<p>facilitator-view works!</p>
-<p>{{title}}</p>
-    <p>roomcode: {{room}}</p>
-    <button (click)="goOnStack()"> Go On Stack</button>
-    <button (click)="goOnDR()">Go on DR</button>
-    <button (click)="nextOnStack()">Call Next</button>
-    <button (click)="nextOnDR()">Call DirectResponse</button>
-
-
-    <div *ngIf="(list|async)?.speaker; else noSpeakerBlock">
-    <p>Currently Speaking: {{(list|async)?.speaker.name}}<p>
-    </div>
-    <ng-template #noSpeakerBlock>
-        <p> No Current Speaker </p>
-    </ng-template>
-
-    <div *ngIf="(list|async)?.stack && (list|async)?.stack.length!=0; else noStackBlock">
-    <h3>The Stack</h3>
-    <ul>    
-        <li *ngFor="let stacker of (list|async)?.stack">
-            <app-stack-card [stacker]=stacker></app-stack-card>
-        </li>
-    </ul>
-    </div>
-    <ng-template #noStackBlock>
-        <p>no stack :(</p>
-    </ng-template>
-
-    <div *ngIf="(list|async)?.directResponse && (list|async)?.directResponse.length!=0; else noDRBlock">
-        <h3>Direct Response</h3>
-        <ul>    
-            <li *ngFor="let stacker of (list|async)?.directResponse">
-                <app-stack-card [stacker]=stacker [facilitator]=true></app-stack-card>
-            </li>
-        </ul>
+<mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile>
+        <h3>Welcome to {{title}}</h3>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <h4>roomcode: {{room}}</h4>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    <button mat-raised-button (click)="goOnStack()"> Go On Stack</button>
+    <button mat-stroked-button (click)="nextOnStack()">Call Next</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button (click)="goOnDR()">Go on DR</button>
+        <button mat-stroked-button (click)="nextOnDR()">Call DirectResponse</button>
+    </mat-grid-tile>
+    
+    
+    <mat-grid-tile>
+        <div *ngIf="(list|async)?.speaker; else noSpeakerBlock">
+            <p>Currently Speaking:<p>
+            <app-stack-card [stacker]="(list|async)?.speaker"></app-stack-card>
         </div>
-        <ng-template #noDRBlock>
-            <p>no DirectResponse</p>
-        </ng-template>
+            <ng-template #noSpeakerBlock>
+                <p> No Current Speaker </p>
+            </ng-template>
+        </mat-grid-tile>
+        
+       
+        <mat-grid-tile>
+
+            <div class="adminstack" *ngIf="(list|async)?.directResponse && (list|async)?.directResponse.length!=0; else noDRBlock">
+                <h3>Direct Response</h3>
+                <Ol>    
+                    <li *ngFor="let stacker of (list|async)?.directResponse">
+                        <app-stack-card [stacker]=stacker [facilitator]=true></app-stack-card>
+                    </li>
+                </Ol>
+            </div>
+            <ng-template #noDRBlock>
+                <p>no DirectResponse</p>
+            </ng-template>
+        </mat-grid-tile>
+        <mat-grid-tile [rowspan]=sizeOfStack>
+            <div class= "adminstack" *ngIf="(list|async)?.stack && (list|async)?.stack.length!=0; else noStackBlock">
+                <h3>The Stack</h3>
+                <mat-grid-list cols=1 rowHeight="3:1">
+                        <mat-grid-tile *ngFor="let stacker of (list|async)?.stack; index as i">
+                         <app-stack-card [stacker]=stacker></app-stack-card>
+                        </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <ng-template #noStackBlock>
+                <p>no stack :(</p>
+            </ng-template>
+            
+            
+        </mat-grid-tile>
+    </mat-grid-list>

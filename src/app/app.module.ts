@@ -21,6 +21,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -48,7 +49,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatCheckboxModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonToggleModule
+    MatButtonToggleModule, 
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

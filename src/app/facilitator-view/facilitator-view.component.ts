@@ -18,6 +18,7 @@ export class FacilitatorViewComponent implements OnInit {
   list:Observable<StackView> = new Observable<StackView>();
   room:string = "";
   title:string = "connecting";
+  sizeOfStack:number = 3
 
   user:Profile = {name:"",tags:[]}
   constructor(private router:Router,
