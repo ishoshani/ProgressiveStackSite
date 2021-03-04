@@ -1,6 +1,10 @@
 {
   "name": "progressive-stack",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.15.4",
+    "npm": "6.14.10"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,6 +15,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^0.13.1",
     "@angular/animations": "~11.1.2",
     "@angular/cdk": "^11.2.0",
     "@angular/common": "~11.1.2",
